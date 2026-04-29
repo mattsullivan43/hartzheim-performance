@@ -324,7 +324,10 @@
         </ul>
       </div>
 
-      <form class="contact__form reveal" id="consultForm" novalidate>
+      <form class="contact__form reveal" id="consultForm" action="https://formsubmit.co/ajax/jack@hartzheimperformance.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New consult request — Hartzheim Performance" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <div class="field">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required autocomplete="name" />

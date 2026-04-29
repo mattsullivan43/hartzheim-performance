@@ -56,13 +56,16 @@
   const yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- contact form (mailto fallback — no backend required) ---------- */
+  /* ---------- contact form — submits via FormSubmit AJAX ---------- */
   const form = document.getElementById('consultForm');
   const note = document.getElementById('formNote');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
+
+      if (data._honey) return; // bot trap
+
       if (!data.name || !data.email || !data.goal) {
         if (note) {
           note.textContent = 'Please fill in name, email, and goal.';
@@ -70,14 +73,31 @@
         }
         return;
       }
-      const subject = encodeURIComponent(`Consult request — ${data.name}`);
-      const body = encodeURIComponent(
-        `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || '—'}\nGoal: ${data.goal}\nInterested In: ${data.package || '—'}\n\nMessage:\n${data.message || '—'}`
-      );
-      window.location.href = `mailto:jack@hartzheimperformance.com?subject=${subject}&body=${body}`;
-      if (note) {
-        note.textContent = 'Opening your email app… if it doesn’t open, email jack@hartzheimperformance.com directly.';
-        note.className = 'form-note is-success';
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      if (note) { note.textContent = ''; note.className = 'form-note'; }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+        if (!res.ok) throw new Error('bad status');
+        if (note) {
+          note.textContent = 'Got it — Jack will be in touch within 24 hours.';
+          note.className = 'form-note is-success';
+        }
+        form.reset();
+      } catch (err) {
+        if (note) {
+          note.textContent = 'Something went wrong. Email jack@hartzheimperformance.com directly.';
+          note.className = 'form-note is-error';
+        }
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
       }
     });
   }
