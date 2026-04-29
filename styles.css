@@ -818,12 +818,21 @@ ul { list-style: none; padding: 0; margin: 0; }
 @media (max-width: 760px) {
   .nav { display: none; }
   .nav-toggle { display: flex; }
-  .hero { padding-top: 120px; padding-bottom: 80px; min-height: auto; }
+  .nav-wrap { height: 64px; }
+  .brand__logo { height: 42px; }
+  .footer__logo { height: 52px; }
+  .hero { padding-top: 110px; padding-bottom: 72px; min-height: auto; }
+  .hero__title { font-size: clamp(38px, 11vw, 64px); }
   .hero__cta { flex-direction: column; align-items: stretch; }
   .hero__cta .btn { width: 100%; }
-  .hero__stats { grid-template-columns: 1fr; gap: 16px; }
+  .hero__stats { grid-template-columns: 1fr; gap: 14px; padding-top: 22px; }
   .hero__stats li { flex-direction: row; justify-content: space-between; align-items: baseline; }
+  .hero__scroll { display: none; }
   .why-grid { grid-template-columns: 1fr; }
+  .testimonial::before { font-size: 64px; top: 0; left: 14px; }
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .footer__legal .container { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .section { padding: 64px 0; }
 }
 @media (min-width: 761px) {
   .mobile-menu { display: none !important; }
