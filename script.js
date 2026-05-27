@@ -93,7 +93,7 @@
         form.reset();
       } catch (err) {
         if (note) {
-          note.textContent = 'Something went wrong. Email jack@hartzheimperformance.com directly.';
+          note.textContent = 'Something went wrong. Email jackhcpt@hartzheimperformance.com directly.';
           note.className = 'form-note is-error';
         }
       } finally {

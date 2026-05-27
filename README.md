@@ -42,21 +42,15 @@ You have **3 easy options** — all free or near-free:
 2. Domain settings → "Add custom domain" → `hartzheimperformance.com`.
 3. At the registrar, point DNS to Netlify per their instructions (or change nameservers).
 
-## Tying the contact form to a real inbox
-Right now the form opens the user's email client pre-filled to `jack@hartzheimperformance.com`. To collect submissions in a dashboard instead:
-
-- **Formspree** (easiest): create form → get an endpoint URL → in `index.html`, change `<form id="consultForm">` to `<form id="consultForm" action="https://formspree.io/f/XXXXX" method="POST">` and remove the JS preventDefault block. Free 50 submissions/mo.
-- **Netlify Forms**: just add `data-netlify="true" name="consult"` to the form tag — works automatically when deployed on Netlify.
+## Contact form
+The form submits via [FormSubmit](https://formsubmit.co) AJAX to `jackhcpt@hartzheimperformance.com` (see the `action` on `<form id="consultForm">` in `index.html`). The first real submission triggers a one-time FormSubmit confirmation email — click the link in it to activate delivery.
 
 ## Email
-Set up `jack@hartzheimperformance.com` either:
+Set up `jackhcpt@hartzheimperformance.com` either:
 - Through the domain registrar's email forwarding (free → forwards to Jack's gmail), or
 - Google Workspace ($6/mo) for a real mailbox.
 
 ## To-do before launch
-- [ ] Replace `assets/logo.svg` with the real logo file (the one from the brief)
-- [ ] Replace `assets/coach-placeholder.svg` with Jack's headshot (JPG/PNG ~1200×1500)
-- [ ] Drop real before/after photos into `assets/gallery/` and wire them into the gallery section in `index.html`
-- [ ] Replace placeholder testimonials with real ones once collected
+- [ ] Replace the placeholder Stripe link in `index.html` (`pricing__pay`, currently `buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_LINK`) with the live payment/checkout URL
 - [ ] Add real social links (Instagram, etc.) in the footer
 - [ ] Optionally add an `og-image.jpg` (1200×630) for link previews
