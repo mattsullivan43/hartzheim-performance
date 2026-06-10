@@ -56,6 +56,19 @@
   const yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ---------- Calendly popup (mobile + desktop) ---------- */
+  const CALENDLY_URL = 'https://calendly.com/jackhcpt-hartzheimperformance/30min';
+  document.querySelectorAll('.js-calendly').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      // If the widget script loaded, open the in-page popup; otherwise let the
+      // link fall through and open Calendly in a new tab.
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        e.preventDefault();
+        window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+      }
+    });
+  });
+
   /* ---------- contact form — submits via FormSubmit AJAX ---------- */
   const form = document.getElementById('consultForm');
   const note = document.getElementById('formNote');
