@@ -69,6 +69,31 @@
     });
   });
 
+  /* ---------- payment modal ---------- */
+  const payModal = document.getElementById('payModal');
+  if (payModal) {
+    let lastFocused = null;
+    const openPay = () => {
+      lastFocused = document.activeElement;
+      payModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      const firstLink = payModal.querySelector('.pay-modal__list a');
+      if (firstLink) firstLink.focus();
+    };
+    const closePay = () => {
+      payModal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    };
+    document.querySelectorAll('[data-pay-open]').forEach((b) =>
+      b.addEventListener('click', openPay));
+    payModal.querySelectorAll('[data-pay-close]').forEach((b) =>
+      b.addEventListener('click', closePay));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !payModal.hidden) closePay();
+    });
+  }
+
   /* ---------- contact form — submits via FormSubmit AJAX ---------- */
   const form = document.getElementById('consultForm');
   const note = document.getElementById('formNote');

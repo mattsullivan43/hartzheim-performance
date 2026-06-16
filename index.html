@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=20260616" />
+  <link rel="stylesheet" href="styles.css?v=20260616b" />
 
   <!-- Calendly scheduling (popup widget — works on mobile + desktop) -->
   <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
@@ -160,82 +160,8 @@
         <p class="section__lede">Every package includes custom programming, nutrition guidance, and accountability check-ins. No cookie-cutter plans. Ever.</p>
       </div>
 
-      <div class="pricing-grid">
-
-        <!-- Single Session -->
-        <article class="card pricing reveal">
-          <header class="pricing__head">
-            <p class="pricing__tag">DROP-IN</p>
-            <h3 class="pricing__name">1-on-1 Session</h3>
-            <p class="pricing__price"><span class="pricing__amt">$70</span><span class="pricing__per">/ session</span></p>
-          </header>
-          <ul class="pricing__feats">
-            <li>60-minute personal training</li>
-            <li>Form coaching &amp; programming</li>
-            <li>Pay-as-you-go &mdash; no commitment</li>
-            <li>Great for trial &amp; tune-ups</li>
-          </ul>
-          <a href="https://calendly.com/jackhcpt-hartzheimperformance/accountability-meeting" class="btn btn--ghost btn--block js-calendly" target="_blank" rel="noopener">Book a Session</a>
-        </article>
-
-        <!-- Monthly Packages -->
-        <article class="card pricing pricing--featured reveal">
-          <div class="pricing__ribbon">MOST POPULAR</div>
-          <header class="pricing__head">
-            <p class="pricing__tag">MONTHLY</p>
-            <h3 class="pricing__name">Monthly Packages</h3>
-            <p class="pricing__price"><span class="pricing__amt">$260+</span><span class="pricing__per">/ month</span></p>
-          </header>
-          <ul class="pricing__tiers">
-            <li><span>4 sessions / mo</span><strong>$260</strong></li>
-            <li><span>8 sessions / mo</span><strong>$500</strong></li>
-            <li><span>12 sessions / mo</span><strong>$720</strong></li>
-          </ul>
-          <ul class="pricing__feats">
-            <li>Custom monthly programming</li>
-            <li>Nutrition guidance</li>
-            <li>Weekly accountability check-ins</li>
-            <li>Progress tracking</li>
-          </ul>
-          <a href="https://calendly.com/jackhcpt-hartzheimperformance/accountability-meeting" class="btn btn--primary btn--block js-calendly" target="_blank" rel="noopener">Get Started</a>
-        </article>
-
-        <!-- Transformation -->
-        <article class="card pricing reveal">
-          <header class="pricing__head">
-            <p class="pricing__tag">TRANSFORMATION</p>
-            <h3 class="pricing__name">Transformation Programs</h3>
-            <p class="pricing__price"><span class="pricing__amt">$780+</span><span class="pricing__per">total program</span></p>
-          </header>
-          <ul class="pricing__tiers">
-            <li><span>12-week program</span><strong>$780</strong></li>
-            <li><span>15-week program</span><strong>$975</strong></li>
-            <li><span>20-week program</span><strong>$1,300</strong></li>
-          </ul>
-          <ul class="pricing__feats">
-            <li>Full body re-comp blueprint</li>
-            <li>Nutrition + habit coaching</li>
-            <li>Before/after assessment</li>
-            <li>Best for serious results</li>
-          </ul>
-          <a href="https://calendly.com/jackhcpt-hartzheimperformance/accountability-meeting" class="btn btn--ghost btn--block js-calendly" target="_blank" rel="noopener">Apply Now</a>
-        </article>
-
-      </div>
-
       <div class="pricing__pay reveal">
-        <details class="pay-menu">
-          <summary class="btn btn--primary btn--lg">Make a Payment</summary>
-          <div class="pay-menu__list" role="list">
-            <a href="https://buy.stripe.com/3cI8wH8rT65ib7E6nccjS02" target="_blank" rel="noopener"><span>1-on-1 Single Session</span><strong>$70</strong></a>
-            <a href="https://buy.stripe.com/bJedR1gYp1P22B83b0cjS03" target="_blank" rel="noopener"><span>Monthly &mdash; 4 sessions / mo</span><strong>$260</strong></a>
-            <a href="https://buy.stripe.com/00w8wHgYpdxK8ZweTIcjS04" target="_blank" rel="noopener"><span>Monthly &mdash; 8 sessions / mo</span><strong>$500</strong></a>
-            <a href="https://buy.stripe.com/9B6aEPbE59hu7VsdPEcjS05" target="_blank" rel="noopener"><span>Monthly &mdash; 12 sessions / mo</span><strong>$720</strong></a>
-            <a href="https://buy.stripe.com/4gMdR1cI93Xa0t03b0cjS06" target="_blank" rel="noopener"><span>Transformation &mdash; 12-week</span><strong>$780</strong></a>
-            <a href="https://buy.stripe.com/cNi6oz23v2T65Nk6nccjS07" target="_blank" rel="noopener"><span>Transformation &mdash; 15-week</span><strong>$975</strong></a>
-            <a href="https://buy.stripe.com/9B614fdMd8dqdfM7rgcjS08" target="_blank" rel="noopener"><span>Transformation &mdash; 20-week</span><strong>$1,300</strong></a>
-          </div>
-        </details>
+        <button type="button" class="btn btn--primary btn--lg" data-pay-open aria-haspopup="dialog">Make a Payment</button>
         <span class="pricing__pay-note">Secure checkout powered by Stripe</span>
       </div>
 
@@ -402,6 +328,27 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260616" defer></script>
+  <!-- ============ PAYMENT MODAL ============ -->
+  <div class="pay-modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payModalTitle" hidden>
+    <div class="pay-modal__backdrop" data-pay-close></div>
+    <div class="pay-modal__panel" role="document">
+      <button type="button" class="pay-modal__close" data-pay-close aria-label="Close">&times;</button>
+      <p class="eyebrow eyebrow--red">SECURE CHECKOUT</p>
+      <h2 class="pay-modal__title" id="payModalTitle">Make a Payment</h2>
+      <p class="pay-modal__lede">Choose your package below &mdash; you&rsquo;ll be taken to secure Stripe checkout.</p>
+      <div class="pay-modal__list" role="list">
+        <a href="https://buy.stripe.com/3cI8wH8rT65ib7E6nccjS02" target="_blank" rel="noopener"><span>1-on-1 Single Session</span><strong>$70</strong></a>
+        <a href="https://buy.stripe.com/bJedR1gYp1P22B83b0cjS03" target="_blank" rel="noopener"><span>Monthly &mdash; 4 sessions / mo</span><strong>$260</strong></a>
+        <a href="https://buy.stripe.com/00w8wHgYpdxK8ZweTIcjS04" target="_blank" rel="noopener"><span>Monthly &mdash; 8 sessions / mo</span><strong>$500</strong></a>
+        <a href="https://buy.stripe.com/9B6aEPbE59hu7VsdPEcjS05" target="_blank" rel="noopener"><span>Monthly &mdash; 12 sessions / mo</span><strong>$720</strong></a>
+        <a href="https://buy.stripe.com/4gMdR1cI93Xa0t03b0cjS06" target="_blank" rel="noopener"><span>Transformation &mdash; 12-week</span><strong>$780</strong></a>
+        <a href="https://buy.stripe.com/cNi6oz23v2T65Nk6nccjS07" target="_blank" rel="noopener"><span>Transformation &mdash; 15-week</span><strong>$975</strong></a>
+        <a href="https://buy.stripe.com/9B614fdMd8dqdfM7rgcjS08" target="_blank" rel="noopener"><span>Transformation &mdash; 20-week</span><strong>$1,300</strong></a>
+      </div>
+      <p class="pay-modal__note">Powered by Stripe &mdash; your payment details are never stored on this site.</p>
+    </div>
+  </div>
+
+  <script src="script.js?v=20260616b" defer></script>
 </body>
 </html>

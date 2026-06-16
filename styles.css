@@ -619,57 +619,102 @@ ul { list-style: none; padding: 0; margin: 0; }
   color: var(--text-mute);
 }
 
-/* Make-a-Payment dropdown menu */
-.pay-menu {
-  position: relative;
-  display: inline-block;
+/* ---------- PAYMENT MODAL ---------- */
+.pay-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-.pay-menu > summary {
-  list-style: none;
-  cursor: pointer;
-}
-.pay-menu > summary::-webkit-details-marker { display: none; }
-.pay-menu > summary::after {
-  content: "▾";
-  margin-left: 10px;
-  font-size: 0.8em;
-  transition: transform 0.2s ease;
-}
-.pay-menu[open] > summary::after { transform: rotate(180deg); }
-.pay-menu__list {
+.pay-modal[hidden] { display: none; }
+.pay-modal__backdrop {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 10px;
-  width: min(340px, 86vw);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(3px);
+  animation: payFade 0.2s ease;
+}
+.pay-modal__panel {
+  position: relative;
+  width: min(440px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
   background: var(--bg-2, #141414);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-  padding: 6px;
-  z-index: 30;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  padding: clamp(24px, 4vw, 36px);
+  animation: payRise 0.25s ease;
 }
-.pay-menu__list a {
+.pay-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.pay-modal__close:hover { color: #fff; }
+.pay-modal__title {
+  font-family: "Anton", sans-serif;
+  font-size: clamp(28px, 6vw, 38px);
+  text-transform: uppercase;
+  margin: 6px 0 10px;
+  letter-spacing: 0.01em;
+}
+.pay-modal__lede {
+  color: var(--text-mute);
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+.pay-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pay-modal__list a {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 13px 16px;
-  border-radius: 9px;
+  padding: 15px 18px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
-  transition: background 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
 }
-.pay-menu__list a:hover,
-.pay-menu__list a:focus-visible {
-  background: rgba(255, 255, 255, 0.07);
+.pay-modal__list a:hover,
+.pay-modal__list a:focus-visible {
+  border-color: var(--red);
+  background: rgba(230, 57, 70, 0.1);
 }
-.pay-menu__list a strong {
+.pay-modal__list a:active { transform: scale(0.99); }
+.pay-modal__list a strong {
   color: var(--red);
   font-weight: 800;
   white-space: nowrap;
+}
+.pay-modal__note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mute);
+  text-align: center;
+}
+@keyframes payFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes payRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- SUPPLEMENTS CALLOUT ---------- */
