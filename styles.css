@@ -603,6 +603,37 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .why-item--cta .btn--primary:hover { background: #000; color: #fff; }
 
+/* ---------- PRICE SUMMARY ---------- */
+.price-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 40px;
+  margin-top: 28px;
+}
+.price-summary li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.price-summary__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.price-summary strong {
+  font-family: "Anton", sans-serif;
+  font-size: 26px;
+  color: var(--red);
+  letter-spacing: 0.01em;
+}
+.price-summary__per {
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
 /* ---------- PAY BUTTON ---------- */
 .pricing__pay {
   display: flex;
