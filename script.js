@@ -57,7 +57,7 @@
   if (yr) yr.textContent = new Date().getFullYear();
 
   /* ---------- Calendly popup (mobile + desktop) ---------- */
-  const CALENDLY_URL = 'https://calendly.com/jackhcpt-hartzheimperformance/30min';
+  const CALENDLY_URL = 'https://calendly.com/jackhcpt-hartzheimperformance/accountability-meeting';
   document.querySelectorAll('.js-calendly').forEach((link) => {
     link.addEventListener('click', (e) => {
       // If the widget script loaded, open the in-page popup; otherwise let the
