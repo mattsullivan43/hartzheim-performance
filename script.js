@@ -57,14 +57,13 @@
   if (yr) yr.textContent = new Date().getFullYear();
 
   /* ---------- Calendly popup (mobile + desktop) ---------- */
-  const CALENDLY_URL = 'https://calendly.com/jackhcpt-hartzheimperformance/accountability-meeting';
   document.querySelectorAll('.js-calendly').forEach((link) => {
     link.addEventListener('click', (e) => {
-      // If the widget script loaded, open the in-page popup; otherwise let the
-      // link fall through and open Calendly in a new tab.
+      // If the widget script loaded, open the in-page popup using this button's
+      // own href; otherwise let the link fall through and open in a new tab.
       if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
         e.preventDefault();
-        window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+        window.Calendly.initPopupWidget({ url: link.href });
       }
     });
   });
